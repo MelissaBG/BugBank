@@ -20,7 +20,7 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.0.0</version>
         </dependency>
-        <!-- JUnit para frameworks de teste -->
+        <!-- JUnit 5 para frameworks de teste -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -38,6 +38,18 @@
             <artifactId>logback-classic</artifactId>
             <version>1.4.11</version> <!-- ou a versão mais recente -->
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>4.21.0</version>
+        </dependency>
+        <!-- Remover JUnit 4 -->
+        <!-- <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency> -->
     </dependencies>
 
     <properties>
@@ -45,5 +57,17 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

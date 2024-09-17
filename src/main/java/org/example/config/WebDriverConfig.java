@@ -5,16 +5,17 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class WebDriverConfig {
     private static WebDriver driver;
 
-    public static WebDriver getDriver(){
-        if (driver == null){
+    public static WebDriver getDriver() {
+        if (driver == null) {
+            // Use WebDriverManager to manage the driver
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
-            driver.manage().window().maximize();
         }
         return driver;
     }
-    public static void quitDriver(){
-        if(driver != null){
+
+    public static void quitDriver() {
+        if (driver != null) {
             driver.quit();
             driver = null;
         }

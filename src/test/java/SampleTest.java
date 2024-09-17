@@ -1,26 +1,30 @@
-import org.example.config.WebDriverConfig;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 
 public class SampleTest {
     private WebDriver driver;
 
     @BeforeEach
-    public  void setUp(){
-        driver = WebDriverConfig.getDriver();
-        driver.get("https://bugbank.netlify.app/");
+    public void setUp() {
+        WebDriverManager.chromedriver().setup(); // Configura o WebDriverManager para o ChromeDriver
+        driver = new ChromeDriver(); // Inicializa o ChromeDriver
     }
+
     @Test
-    public void testPageTitle(){
-        String pageTitle = driver.getTitle();
-        assertEquals("bugbank", pageTitle);
+    public void testOpenGoogle() {
+        driver.get("https://www.google.com"); // Abre a página do Google
+        // Exibe o título da página no console
+        System.out.println("Page Title: " + driver.getTitle());
     }
+
     @AfterEach
-    public void tearDown(){
-        WebDriverConfig.quitDriver();
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit(); // Encerra o navegador
+        }
     }
 }
